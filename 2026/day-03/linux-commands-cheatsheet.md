@@ -38,6 +38,20 @@
 - ln file1 link1: hard link
 - ln -s /var/log/nginx/access.log access.log: soft link
 
+## 3. Networking troubleshooting
+
+- ping <domain-name>, eg: ping google.com : to check if a site is sending back packets or not [to check netowrk conenctivity]
+- curl https://example.com:  Check headers and status code
+- wget: download something
+- nslookup <sitename>: dns troublebshoot
+- ss -tulnp: check listening ports
+- nc -zv localhost 8080: check if port is reachable or not
+- lsof -i :8080 : who is using the port
+- ufw status: check firewall status
+- iptables -L : check security groups
+- ifconfig: check your current ip adress and other NIC adresses
+- traceroute google.com - trace network path
+- mtr google.com - trace network path
 
 
 
