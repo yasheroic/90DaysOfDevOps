@@ -152,4 +152,77 @@ MiB Swap:      0.0 total,      0.0 free,      0.0 used.    566.4 avail Mem
      23 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1                                                                                        
      24 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 idle_inject/1                                                                                  
      25 root      rt   0       0      0      0 S   0.0   0.0   0:00.06 migration/1                                                                                    
-     26 root      20   0       0      0      0 S   0.0   0.0   0:00.01 ksoftirqd/1                                                                                    
+     26 root      20   0       0      0      0 S   0.0   0.0   0:00.01 ksoftirqd/1                   
+
+
+  -------
+## Systemctl status
+systemctl status
+● ip-172-31-20-62
+    State: running
+    Units: 413 loaded (incl. loaded aliases)
+     Jobs: 0 queued
+   Failed: 0 units
+    Since: Tue 2026-01-27 20:16:27 UTC; 11min ago
+  systemd: 255.4-1ubuntu8.11
+   CGroup: /
+           ├─init.scope
+           │ └─1 /sbin/init
+           ├─system.slice
+           │ ├─ModemManager.service
+           │ │ └─759 /usr/sbin/ModemManager
+           │ ├─acpid.service
+           │ │ └─594 /usr/sbin/acpid
+           │ ├─chrony.service
+           │ │ ├─686 /usr/sbin/chronyd -F 1
+           │ │ └─702 /usr/sbin/chronyd -F 1
+           │ ├─cron.service
+           │ │ └─598 /usr/sbin/cron -f -P
+           │ ├─dbus.service
+           │ │ └─599 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+           │ ├─irqbalance.service
+           │ │ └─604 /usr/sbin/irqbalance
+           │ ├─multipathd.service
+           │ │ └─190 /sbin/multipathd -d -s
+           │ ├─networkd-dispatcher.service                                                                 
+
+---------
+
+## systemctl list-units:
+------
+UNIT                                                                         LOAD   ACTIVE SUB       DESCRIPTION                                                   >
+  proc-sys-fs-binfmt_misc.automount                                            loaded active running   Arbitrary Executable File Formats File System Automount Point >
+  sys-devices-pci0000:00-0000:00:04.0-nvme-nvme0-nvme0n1-nvme0n1p1.device      loaded active plugged   Amazon Elastic Block Store cloudimg-rootfs
+  sys-devices-pci0000:00-0000:00:04.0-nvme-nvme0-nvme0n1-nvme0n1p14.device     loaded active plugged   Amazon Elastic Block Store 14
+  sys-devices-pci0000:00-0000:00:04.0-nvme-nvme0-nvme0n1-nvme0n1p15.device     loaded active plugged   Amazon Elastic Block Store UEFI
+  sys-devices-pci0000:00-0000:00:04.0-nvme-nvme0-nvme0n1-nvme0n1p16.device     loaded active plugged   Amazon Elastic Block Store BOOT
+  sys-devices-pci0000:00-0000:00:04.0-nvme-nvme0-nvme0n1.device                loaded active plugged   Amazon Elastic Block Store
+  sys-devices-pci0000:00-0000:00:05.0-net-ens5.device                          loaded active plugged   Elastic Network Adapter (ENA)
+  sys-devices-platform-serial8250-serial8250:0-serial8250:0.1-tty-ttyS1.device loaded active plugged   /sys/devices/platform/serial8250/serial8250:0/serial8250:0.1/t>
+  sys-devices-platform-serial8250-serial8250:0-serial8250:0.2-tty-ttyS2.device loaded active plugged   /sys/devices/platform/serial8250/serial8250:0/serial8250:0.2/t>
+  sys-devices-platform-serial8250-serial8250:0-serial8250:0.3-tty-ttyS3.device loaded active plugged   /sys/devices/platform/serial8250/serial8250:0/serial8250:0.3/t>
+  sys-devices-pnp0-00:04-00:04:0-00:04:0.0-tty-ttyS0.device                    loaded active plugged   /sys/devices/pnp0/00:04/00:04:0/00:04:0.0/tty/ttyS0
+  sys-devices-virtual-block-loop0.device                                       loaded active plugged   /sys/devices/virtual/block/loop0
+  sys-devices-virtual-block-loop1.device                                       loaded active plugged   /sys/devices/virtual/block/loop1
+  sys-devices-virtual-block-loop2.device                                       loaded active plugged   /sys/devices/virtual/block/loop2
+  sys-devices-virtual-misc-rfkill.device                                       loaded active plugged   /sys/devices/virtual/misc/rfkill
+  sys-devices-virtual-tty-ttyprintk.device                                     loaded active plugged   /sys/devices/virtual/tty/ttyprintk
+  sys-module-configfs.device                                                   loaded active plugged   /sys/module/configfs
+  sys-module-fuse.device                                                       loaded active plugged   /sys/module/fuse
+  sys-subsystem-net-devices-ens5.device                                        loaded active plugged   Elastic Network Adapter (ENA)                                 >
+  -.mount                                                                      loaded active mounted   Root Mount
+  boot-efi.mount                                                               loaded active mounted   /boot/efi
+  boot.mount                                                                   loaded active mounted   /boot
+  dev-hugepages.mount                                                          loaded active mounted   Huge Pages File System
+  dev-mqueue.mount                                                             loaded active mounted   POSIX Message Queue File System
+  proc-sys-fs-binfmt_misc.mount                                                loaded active mounted   Arbitrary Executable File Formats File System
+  run-user-1000.mount                                                          loaded active mounted   /run/user/1000
+  snap-amazon\x2dssm\x2dagent-11797.mount                                      loaded active mounted   Mount unit for amazon-ssm-agent, revision 11797
+  snap-core22-2163.mount                                                       loaded active mounted   Mount unit for core22, revision 2163
+  snap-snapd-25577.mount                                                       loaded active mounted   Mount unit for snapd, revision 25577
+  sys-fs-fuse-connections.mount                                                loaded active mounted   FUSE Control File System
+  sys-kernel-config.mount     
+
+------
+
+##
