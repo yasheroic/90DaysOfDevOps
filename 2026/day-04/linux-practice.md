@@ -39,3 +39,19 @@
         Jan 27 20:31:26 ip-172-31-20-62 systemd[1]: Started apache2.service - The Apache HTTP Server.
     - sudo systemctl start apache2
     - sudo systemctl enable apache2
+
+- **3.log commands:**
+    - cat /var/log/syslog
+    - tail -n 50 /var/log/auth.log (output in output.txt)
+        backups  cache  crash  lib  local  lock  log  mail  opt  run  snap  spool  tmp  www
+        ubuntu@ip-172-31-20-62:/var$ cd log
+        ubuntu@ip-172-31-20-62:/var/log$ ls
+        README            amazon   apport.log  auth.log  chrony                 cloud-init.log  dmesg     journal   landscape  private  sysstat              wtmp
+        alternatives.log  apache2  apt         btmp      cloud-init-output.log  dist-upgrade    dpkg.log  kern.log  lastlog    syslog   unattended-upgrades
+        ubuntu@ip-172-31-20-62:/var/log$ tail -n 50 auth.log 
+    -  journalctl (output in output.txt)
+    - journalctl -n 50
+
+- **4.Monitoring a service -SSH :**
+    - sudo systemctl status ssh  (output in output.txt)
+

@@ -225,4 +225,118 @@ UNIT                                                                         LOA
 
 ------
 
+##tail -n 50 auth.log
+ip-172-31-20-62 polkitd[608]: Loading rules from directory /usr/share/polkit-1/rules.d
+2026-01-27T20:16:39.926896+00:00 ip-172-31-20-62 polkitd[608]: Finished loading, compiling and executing 6 rules
+2026-01-27T20:16:39.926902+00:00 ip-172-31-20-62 polkitd[608]: Acquired the name org.freedesktop.PolicyKit1 on the system bus
+2026-01-27T20:16:44.904941+00:00 ip-172-31-20-62 sshd[1029]: Server listening on 0.0.0.0 port 22.
+2026-01-27T20:16:44.905051+00:00 ip-172-31-20-62 sshd[1029]: Server listening on :: port 22.
+2026-01-27T20:16:46.747803+00:00 ip-172-31-20-62 ec2-instance-connect[1140]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaDdDZWCE
+2026-01-27T20:16:46.782927+00:00 ip-172-31-20-62 ec2-instance-connect[1172]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaDdDZWCE, request-id: f7b28822-cac7-435d-97a4-1ab7665ec41b, for IAM principal: arn:aws:iam::324037318493:root
+2026-01-27T20:16:47.716490+00:00 ip-172-31-20-62 ec2-instance-connect[1289]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaDdDZWCE
+2026-01-27T20:16:47.749723+00:00 ip-172-31-20-62 ec2-instance-connect[1321]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaDdDZWCE, request-id: f7b28822-cac7-435d-97a4-1ab7665ec41b, for IAM principal: arn:aws:iam::324037318493:root
+2026-01-27T20:16:48.007156+00:00 ip-172-31-20-62 sshd[1031]: Accepted publickey for ubuntu from 18.206.107.28 port 61011 ssh2: ED25519 SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaDdDZWCE
+2026-01-27T20:16:48.010353+00:00 ip-172-31-20-62 sshd[1031]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+2026-01-27T20:16:48.035963+00:00 ip-172-31-20-62 systemd-logind[616]: New session 1 of user ubuntu.
+2026-01-27T20:16:48.054528+00:00 ip-172-31-20-62 (systemd): pam_unix(systemd-user:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+2026-01-27T20:17:01.016947+00:00 ip-172-31-20-62 CRON[1489]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-01-27T20:17:01.020803+00:00 ip-172-31-20-62 CRON[1489]: pam_unix(cron:session): session closed for user root
+2026-01-27T20:25:01.025761+00:00 ip-172-31-20-62 CRON[1517]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-01-27T20:25:01.028883+00:00 ip-172-31-20-62 CRON[1517]: pam_unix(cron:session): session closed for user root
+2026-01-27T20:30:53.594608+00:00 ip-172-31-20-62 sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/apt update
+2026-01-27T20:30:53.598165+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+2026-01-27T20:31:11.490935+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session closed for user root
+2026-01-27T20:31:17.125429+00:00 ip-172-31-20-62 sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/apt install apache2
+2026-01-27T20:31:17.126065+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+2026-01-27T20:31:22.568866+00:00 ip-172-31-20-62 groupadd[2005]: group added to /etc/group: name=ssl-cert, GID=113
+2026-01-27T20:31:22.572254+00:00 ip-172-31-20-62 groupadd[2005]: group added to /etc/gshadow: name=ssl-cert
+2026-01-27T20:31:22.573986+00:00 ip-172-31-20-62 groupadd[2005]: new group: name=ssl-cert, GID=113
+2026-01-27T20:31:34.167657+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session closed for user root
+2026-01-27T20:31:57.039750+00:00 ip-172-31-20-62 sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl start apache2
+2026-01-27T20:31:57.040723+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+2026-01-27T20:31:57.048170+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session closed for user root
+2026-01-27T20:32:14.358881+00:00 ip-172-31-20-62 sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl enable apache2
+2026-01-27T20:32:14.359456+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+2026-01-27T20:32:15.214445+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session closed for user root
+2026-01-27T20:32:47.862952+00:00 ip-172-31-20-62 sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/systemctl status apache2
+2026-01-27T20:32:47.863528+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+2026-01-27T20:32:47.914937+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session closed for user root
+2026-01-27T20:34:59.646503+00:00 ip-172-31-20-62 sshd[1031]: pam_unix(sshd:session): session closed for user ubuntu
+2026-01-27T20:34:59.650823+00:00 ip-172-31-20-62 systemd-logind[616]: Session 1 logged out. Waiting for processes to exit.
+2026-01-27T20:34:59.651598+00:00 ip-172-31-20-62 systemd-logind[616]: Removed session 1.
+2026-01-27T20:35:01.036041+00:00 ip-172-31-20-62 CRON[2879]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-01-27T20:35:01.042537+00:00 ip-172-31-20-62 CRON[2879]: pam_unix(cron:session): session closed for user root
+2026-01-27T20:35:07.307534+00:00 ip-172-31-20-62 ec2-instance-connect[2991]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/3DsTsY
+2026-01-27T20:35:07.339613+00:00 ip-172-31-20-62 ec2-instance-connect[3023]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/3DsTsY, request-id: 55ca5f59-6bdb-4e6d-b722-4524db5f3ce4, for IAM principal: arn:aws:iam::324037318493:root
+2026-01-27T20:35:08.218785+00:00 ip-172-31-20-62 ec2-instance-connect[3140]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/3DsTsY
+2026-01-27T20:35:08.250480+00:00 ip-172-31-20-62 ec2-instance-connect[3172]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/3DsTsY, request-id: 55ca5f59-6bdb-4e6d-b722-4524db5f3ce4, for IAM principal: arn:aws:iam::324037318493:root
+2026-01-27T20:35:08.554114+00:00 ip-172-31-20-62 sshd[2882]: Accepted publickey for ubuntu from 18.206.107.28 port 18729 ssh2: ED25519 SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/3DsTsY
+2026-01-27T20:35:08.555827+00:00 ip-172-31-20-62 sshd[2882]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+2026-01-27T20:35:08.559167+00:00 ip-172-31-20-62 systemd-logind[616]: New session 6 of user ubuntu.
+2026-01-27T20:42:09.212996+00:00 ip-172-31-20-62 sudo:   ubuntu : TTY=pts/0 ; PWD=/home/ubuntu ; USER=root ; COMMAND=/usr/bin/tail -n 50 /var/log/syslogs
+2026-01-27T20:42:09.216540+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session opened for user root(uid=0) by ubuntu(uid=1000)
+2026-01-27T20:42:09.216593+00:00 ip-172-31-20-62 sudo: pam_unix(sudo:session): session closed for user root
+-----
+## journalctl
+Jan 27 20:16:28 ubuntu kernel: Linux version 6.14.0-1018-aws (buildd@lcy02-amd64-107) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0, GNU ld (GNU Bin>
+Jan 27 20:16:28 ubuntu kernel: Command line: BOOT_IMAGE=/vmlinuz-6.14.0-1018-aws root=PARTUUID=2baf9194-a5fb-4b12-adb0-45166f0feb06 ro console=tty1 console=ttyS0 nvm>
+Jan 27 20:16:28 ubuntu kernel: KERNEL supported cpus:
+Jan 27 20:16:28 ubuntu kernel:   Intel GenuineIntel
+Jan 27 20:16:28 ubuntu kernel:   AMD AuthenticAMD
+Jan 27 20:16:28 ubuntu kernel:   Hygon HygonGenuine
+Jan 27 20:16:28 ubuntu kernel:   Centaur CentaurHauls
+Jan 27 20:16:28 ubuntu kernel:   zhaoxin   Shanghai  
+Jan 27 20:16:28 ubuntu kernel: BIOS-provided physical RAM map:
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x0000000000100000-0x00000000390cdfff] usable
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x00000000390ce000-0x000000003934dfff] reserved
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x000000003934e000-0x000000003935dfff] ACPI data
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x000000003935e000-0x00000000393ddfff] ACPI NVS
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x00000000393de000-0x000000003d37bfff] usable
+Jan 27 20:16:28 ubuntu kernel: BIOS-e820: [mem 0x000000003d37c000-0x000000003d3fffff] reserved
+Jan 27 20:16:28 ubuntu kernel: NX (Execute Disable) protection: active
+Jan 27 20:16:28 ubuntu kernel: APIC: Static calls initialized
+Jan 27 20:16:28 ubuntu kernel: e820: update [mem 0x3728d018-0x37295e57] usable ==> usable
+Jan 27 20:16:28 ubuntu kernel: extended physical RAM map:
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x0000000000000000-0x000000000009ffff] usable
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x0000000000100000-0x000000003728d017] usable
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x000000003728d018-0x0000000037295e57] usable
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x0000000037295e58-0x00000000390cdfff] usable
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x00000000390ce000-0x000000003934dfff] reserved
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x000000003934e000-0x000000003935dfff] ACPI data
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x000000003935e000-0x00000000393ddfff] ACPI NVS
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x00000000393de000-0x000000003d37bfff] usable
+Jan 27 20:16:28 ubuntu kernel: reserve setup_data: [mem 0x000000003d37c000-0x000000003d3fffff] reserved
+Jan 27 20:16:28 ubuntu kernel: efi: EFI v2.7 by EDK II
+Jan 27 20:16:28 ubuntu kernel: efi: SMBIOS=0x3926a000 ACPI=0x3935d000 ACPI 2.0=0x3935d014 MEMATTR=0x37a0e018 MOKvar=0x39258000 INITRD=0x372cdf18 
+Jan 27 20:16:28 ubuntu kernel: SMBIOS 2.7 present.
+lines 1-32
+---
 ##
+-----
+sh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/usr/lib/systemd/system/ssh.service; disabled; preset: enabled)
+    Drop-In: /usr/lib/systemd/system/ssh.service.d
+             └─ec2-instance-connect.conf
+     Active: active (running) since Tue 2026-01-27 20:16:44 UTC; 32min ago
+TriggeredBy: ● ssh.socket
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 1029 (sshd)
+      Tasks: 1 (limit: 1008)
+     Memory: 6.4M (peak: 10.1M)
+        CPU: 2.745s
+     CGroup: /system.slice/ssh.service
+             └─1029 "sshd: /usr/sbin/sshd -D -o AuthorizedKeysCommand /usr/share/ec2-instance-connect/eic_run_authorized_keys %u %f -o AuthorizedKeysCommandUser ec2->
+
+Jan 27 20:16:47 ip-172-31-20-62 ec2-instance-connect[1289]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaD>
+Jan 27 20:16:47 ip-172-31-20-62 ec2-instance-connect[1321]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZa>
+Jan 27 20:16:48 ip-172-31-20-62 sshd[1031]: Accepted publickey for ubuntu from 18.206.107.28 port 61011 ssh2: ED25519 SHA256:YqgH7ejiw9EljncyB6AFuWpJo19j58RCwmZaDdDZ>
+Jan 27 20:16:48 ip-172-31-20-62 sshd[1031]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+Jan 27 20:35:07 ip-172-31-20-62 ec2-instance-connect[2991]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/>
+Jan 27 20:35:07 ip-172-31-20-62 ec2-instance-connect[3023]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv>
+Jan 27 20:35:08 ip-172-31-20-62 ec2-instance-connect[3140]: Querying EC2 Instance Connect keys for matching fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/>
+Jan 27 20:35:08 ip-172-31-20-62 ec2-instance-connect[3172]: Providing ssh key from EC2 Instance Connect with fingerprint: SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv>
+Jan 27 20:35:08 ip-172-31-20-62 sshd[2882]: Accepted publickey for ubuntu from 18.206.107.28 port 18729 ssh2: ED25519 SHA256:uQMUQkOC5rAvKVCyv/uIfNSopH+yiVrMdCNv/3Ds>
+Jan 27 20:35:08 ip-172-31-20-62 sshd[2882]: pam_unix(sshd:session): session opened for user ubuntu(uid=1000) by ubuntu(uid=0)
+--
