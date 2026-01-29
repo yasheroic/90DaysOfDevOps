@@ -56,4 +56,72 @@ Conclusion: Disk and IO are not impacting SSH service.
 
 -------
 
+- Snapshot:  Logs
+- journalctl -u ssh: logs related to ssh
+- ![journalctl -u ssh:](image-8.png)
+- cd /var/log/auth.log, tail -n 50 | grep sshd - logs realted to ssh are stored in auth log
+- ![alt text](image-9.png)
 
+----------------
+
+-  snapshot: Environment
+- uname: tells abt system info like cpu,architecture,os
+- ![uname -a, uname -r, uname -m](image-10.png)
+- cat etc/os-release
+- ![etc/os-release](image-11.png)
+- lscpu: tells cpu architecture and core
+- ![cpu details](image-12.png)
+- 
+
+-----------------
+
+## Filesystem Sanity
+- cd /tmp
+- mkdir runbook-demo
+
+✔ Confirms:
+
+You can create directories
+
+User permissions are correct
+
+Filesystem is not mounted ro (read-only)
+
+- cp /etc/hosts /tmp/runbook-demo/hosts-copy
+![cat hosts-copy](image-13.png)
+✔ Confirms:
+
+File creation works
+
+Inodes are available
+
+No I/O errors during write
+
+If the disk is:
+
+Full
+
+Corrupted
+
+Remounted ro due to errors
+
+➡️ this command will fail immediately
+
+- ls -l /tmp/runbook-demo
+✔ Confirms:
+
+Metadata can be read
+
+Directory listing works
+
+Permissions look sane
+
+--
+## if its fails then run
+
+df -h
+df -i
+mount | grep " / "
+dmesg | tail
+
+--
