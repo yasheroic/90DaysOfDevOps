@@ -59,7 +59,7 @@ sudo chown tokyo devops-file.txt
 
 Using `chown` you can change both owner and group together:
 
-1. Create file `project-config.yaml`
+1. Create file ``
 2. Change owner to `professor` AND group to `heist-team` (one command)
 3. Create directory `app-logs/`
 4. Change its owner to `berlin` and group to `heist-team`
@@ -106,7 +106,7 @@ Using `chown` you can change both owner and group together:
    - `blueprints.pdf` → owner: `berlin`, group: `tech-team`
    - `escape-plan.txt` → owner: `nairobi`, group: `vault-team`
 
-**Verify:** `ls -l bank-heist/`
+**Verify:** `ls -l bank-heist/`s
 
 ---
 

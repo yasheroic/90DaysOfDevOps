@@ -3,7 +3,7 @@
 - echo "hello" >> test.txt
 - vim script.sh
 - echo "hello devops"
-- chmod 777 scrupt.sh
+- chmod 777 script.sh
 - ./script.sh
 
 - ![ls -l](image.png)
@@ -11,7 +11,7 @@
 ### Task 2: Read Files
 
 - ![cat notes.txt](image-2.png)
-- ![vim scrupt.sh](image-1.png)
+- ![vim script.sh](image-1.png)
 - ![head -n 5 /etc/passwd](image-3.png)
 - ![tail -n 5 /etc/passwd](image-4.png)
 ### Task 3: Understand Permissions 
