@@ -37,7 +37,7 @@ losetup -a   # Note the device name (e.g., /dev/loop0)
 ### Task 1: Check Current Storage
 Run: `lsblk`, `pvs`, `vgs`, `lvs`, `df -h`
 
-### Task 2: Create Physical Volume
+s
 ```bash
 pvcreate /dev/sdb   # or your loop device
 pvs
