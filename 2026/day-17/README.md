@@ -73,7 +73,8 @@ Example:
 mkdir /tmp/devops-test || echo "Directory already exists"
 ```
 
-2. Modify your `install_packages.sh` to check if the script is being run as root — exit with a message if not.
+
+
 
 ---
 
