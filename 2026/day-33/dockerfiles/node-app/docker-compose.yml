@@ -1,0 +1,8 @@
+services:
+  nodejs-app:
+    build: .
+    ports:
+      - "3000:3000"
+    container_name: my-node-cont
+    env_file:
+      - .env
