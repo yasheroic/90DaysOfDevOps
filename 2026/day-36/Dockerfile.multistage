@@ -1,0 +1,24 @@
+#Build Stage
+
+FROM python:3.13-slim AS builder
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+#Run Stage
+
+FROM python:3.13-slim
+
+WORKDIR /app
+
+COPY --from=builder /usr/local /usr/local
+
+COPY --from=builder /app /app
+
+CMD ["sh","-c","python manage.py migrate && python manage.py collectstatic --noinput && gunicorn config.wsgi:application --bind 0.0.0.0:8000"]
+

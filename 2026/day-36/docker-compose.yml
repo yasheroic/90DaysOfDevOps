@@ -1,0 +1,38 @@
+services:
+  django-app:
+    container_name: python-django-container
+    build:
+      context: .
+      dockerfile: Dockerfile.multistage
+    ports:
+      - 8000:8000
+    networks:
+      - internal-app-net
+    depends_on:
+      db:
+        condition: service_healthy
+
+    env_file:
+      - .env
+  db:
+    container_name: database
+    image: postgres:15.17-trixie
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal-app-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - .env
+
+volumes:
+  postgres_data:
+
+networks:
+  internal-app-net:
+    driver: bridge
+  
