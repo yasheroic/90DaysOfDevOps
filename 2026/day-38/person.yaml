@@ -1,0 +1,9 @@
+name: yash
+role: SDE
+experience_years: 5
+learning: True
+tools: [docker,kubernetes,terraform,grafana,prometheus]
+hobbies:
+  - Workout
+  - Keeping up with tech
+  - Watching series

@@ -1,0 +1,29 @@
+server:
+  name: YAML server
+  ip: 10.10.10.10
+database:
+  host: MySQL
+  name: My_Internal_DB
+  credentials:
+    user: admin
+    password: Test@123
+startup_script: |
+  echo "Starting Server"
+  echo "Starting Nginx Service.."
+  systemctl start nginx
+
+# Using fold style `>`
+
+server:
+  name: YAML server
+  ip: 10.10.10.10
+database:
+  host: MySQL
+  name: My_Internal_DB
+  credentials:
+    user: admin
+    password: Test@123
+startup_script: >
+  echo "Starting Server"
+  echo "Starting Nginx Service.."
+  systemctl start nginx
