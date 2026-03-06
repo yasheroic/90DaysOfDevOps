@@ -1,0 +1,54 @@
+name: CI-CD Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm test
+
+
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t myapp:latest .
+
+      - name: Save Docker image as artifact
+        run: docker save myapp:latest > myapp.tar
+
+
+  deploy:
+    name: Deploy to Staging Server
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy application
+        run: |
+          echo "Connecting to staging server"
+          ssh user@staging-server "
+          docker pull myapp:latest &&
+          docker stop myapp || true &&
+          docker rm myapp || true &&
+          docker run -d -p 80:3000 --name myapp myapp:latest
+          "
