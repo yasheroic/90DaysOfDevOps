@@ -1,0 +1,115 @@
+name: (Runtime) Build and Test
+
+on:
+  push:
+    branches: [main]
+    tags:
+      # To get CI for backport releases.
+      # This will duplicate CI for releases from main which is acceptable
+      - "v*"
+  pull_request:
+    paths-ignore:
+      - compiler/**
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        required: false
+        type: string
+        default: ''
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  TZ: /usr/share/zoneinfo/America/Los_Angeles
+  # https://github.com/actions/cache/blob/main/tips-and-workarounds.md#cache-segment-restore-timeout
+  SEGMENT_DOWNLOAD_TIMEOUT_MINS: 1
+
+jobs:
+  # ----- NODE_MODULES CACHE -----
+  # Centralize the node_modules cache so it is saved once and each subsequent job only needs to
+  # restore the cache. Prevents race conditions where multiple workflows try to write to the cache.
+  runtime_node_modules_cache:
+    name: Cache Runtime node_modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.commit_sha != '' && github.event.inputs.commit_sha || github.event.pull_request.head.sha || github.sha }}
+      - name: Check cache hit
+        uses: actions/cache/restore@v4
+        id: node_modules
+        with:
+          path: |
+            **/node_modules
+          key: runtime-node_modules-v7-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          lookup-only: true
+      - uses: actions/setup-node@v4
+        if: steps.node_modules.outputs.cache-hit != 'true'
+        with:
+          node-version-file: '.nvmrc'
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Warm with old cache
+        if: steps.node_modules.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            **/node_modules
+          key: runtime-node_modules-v7-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+          # Don't use restore-keys here. Otherwise the cache grows indefinitely.
+      - run: yarn install --frozen-lockfile
+        if: steps.node_modules.outputs.cache-hit != 'true'
+      - name: Save cache
+        if: steps.node_modules.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            **/node_modules
+          key: runtime-node_modules-v7-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+
+  runtime_compiler_node_modules_cache:
+    name: Cache Runtime, Compiler node_modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.commit_sha != '' && github.event.inputs.commit_sha || github.event.pull_request.head.sha || github.sha }}
+      - name: Check cache hit
+        uses: actions/cache/restore@v4
+        id: node_modules
+        with:
+          path: |
+            **/node_modules
+          key: runtime-and-compiler-node_modules-v7-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock', 'compiler/yarn.lock') }}
+          lookup-only: true
+      - uses: actions/setup-node@v4
+        if: steps.node_modules.outputs.cache-hit != 'true'
+        with:
+          node-version-file: '.nvmrc'
+          cache: yarn
+          cache-dependency-path: |
+            yarn.lock
+            compiler/yarn.lock
+      - name: Warm with old cache
+        if: steps.node_modules.outputs.cache-hit != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            **/node_modules
+          key: runtime-and-compiler-node_modules-v7-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock', 'compiler/yarn.lock') }}
+          # Don't use restore-keys here. Otherwise the cache grows indefinitely.
+      - run: yarn install --frozen-lockfile
+        if: steps.node_modules.outputs.cache-hit != 'true'
+      - run: yarn --cwd compiler install --frozen-lockfile
+        if: steps.node_modules.outputs.cache-hit != 'true'
+      - name: Save cache
+        if: steps.node_modules.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            **/node_modules
+          key: runtime-and-compiler-node_modules-v7-${{ runner.arch }}-${{ runner.os }}-${{ hashFiles('yarn.lock', 'compiler/yarn.lock') }}

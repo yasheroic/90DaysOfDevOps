@@ -80,7 +80,6 @@ tools:
 name: devops
 tools:
 - docker
-- k8
   - kubernetes
 ```
 
