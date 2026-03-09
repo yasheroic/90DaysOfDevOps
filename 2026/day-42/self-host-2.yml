@@ -1,0 +1,15 @@
+name: Self host github runner v2
+
+on:
+    workflow_dispatch:
+
+jobs:
+    self-host-v2:
+        runs-on: [self-hosted, my-default-linux-runner]
+        steps:
+            - name: print hostname
+              run: hostname
+            - name: print working directory
+              run: pwd
+            - name: create and verify file
+              run: mkdir self-host-2 && ls -l

@@ -1,0 +1,25 @@
+name: Github vs Self Hosted Runners
+
+on:
+    workflow_dispatch:
+
+jobs:
+  ubuntu-software-versions:
+      runs-on: ubuntu-latest
+      steps:
+            - name: Print OS
+              run: echo "OS is ${{ runner.os }}"
+            - name: Print Host name
+              run: hostname
+            - name: Print User name
+              run: whoami
+            - name: Docker Version
+              run: docker --version
+            - name: Python Version
+              run: python --version
+            - name: Node Version
+              run: node --version
+            - name: Git version
+              run: git --version
+
+        

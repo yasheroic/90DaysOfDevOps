@@ -1,0 +1,35 @@
+name: Github vs Self Hosted Runners
+
+on:
+    workflow_dispatch:
+
+jobs:
+    deploy_ubuntu:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print OS
+              run: echo "OS is ${{ runner.os }}"
+            - name: Print Host name
+              run: hostname
+            - name: Print User name
+              run: whoami
+    deploy_MacOS:
+        runs-on: macos-latest
+        steps:
+            - name: Print OS
+              run: echo "OS is ${{ runner.os }}"
+            - name: Print Host name
+              run: hostname
+            - name: Print User name
+              run: whoami
+    deploy_Windows:
+        runs-on: windows-latest
+        steps:
+            - name: Print OS
+              run: echo "OS is ${{ runner.os }}"
+            - name: Print Host name
+              run: Write-Host $env:COMPUTERNAME
+              shell: powershell
+            - name: Print User name
+              run: Write-Output "Runner user is $env:USERNAME"
+              shell: powershell
