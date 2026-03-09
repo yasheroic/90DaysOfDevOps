@@ -1,0 +1,19 @@
+name: pr-check 
+
+on:
+    # pull_request:
+    #     types: [opened, synchronize, reopened]
+    #     branches:
+    #         - main
+    workflow_dispatch:
+
+
+jobs:
+    pr-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+            - name: printing pr check branch
+              run: echo "PR check running for branch ${{ github.head_ref }}"
+            

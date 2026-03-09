@@ -1,0 +1,26 @@
+name: manual with env
+
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Environment to deploy to'
+                required: true
+                default: 'staging'
+                type: choice
+                options: 
+                    - staging
+                    - production
+
+
+
+jobs:
+    manual-with-env:
+        runs-on: ubuntu-latest
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+            - name: check Workflow Env Name
+              run: echo "Workflow Environment-  ${{ github.event.inputs.environment }}"  
+            
+            

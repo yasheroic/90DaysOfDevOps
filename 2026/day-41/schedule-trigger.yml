@@ -1,0 +1,16 @@
+name: pr-check 
+
+on:
+    schedule:
+      - cron: '0 9 * * *'
+
+
+jobs:
+    schedule-trigger:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v4
+            - name: printing success message
+              run:  echo "Succesfully ran at" $(date)
+            
