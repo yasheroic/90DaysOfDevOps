@@ -1,0 +1,38 @@
+name: github conditionals
+
+on:
+    workflow_dispatch:
+
+
+jobs:
+    conditional-1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: printing Hello world if branch is main
+              if: ${{ github.ref_name == 'main' }}
+              run: echo "check Printing HEllO WORLD on Main Branch"
+            - name: Debug branch
+              run: echo "Branch is ${{ github.ref_name }}"
+    # This runs to show how steps work on previous step's failure
+    conditional-2: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: Step bound to fail
+              run: exit 1
+            - name: Running cleanup on failure
+              if: failure()
+              run: echo "Running Code for cleanup on failure"
+    conditional-3:
+        runs-on: ubuntu-latest
+        if: ${{ github.event_name == 'push' }}
+        steps:
+            - name: Printing Success message if trigger is push
+              run: echo "Job Success!!"
+    conditional-4:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Step Bound to fail
+              continue-on-error: true
+              run: exit 1
+            - name: Step 2 still running
+              run: echo "Step 2 still running even on failure of previous step"

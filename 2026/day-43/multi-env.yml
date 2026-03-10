@@ -1,0 +1,35 @@
+name: multi environment 
+
+on:
+    workflow_dispatch:
+
+env:
+    docker_user: ${{ vars.DOCKERHUB_USERNAME }}
+    APP_NAME: myapp
+
+
+jobs:
+    multi-env:
+        env:
+            ENVIRONMENT: staging
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v4
+            - name: Printing Dockerhub Username (Workflow level ENV)
+              run: echo ${{ env.docker_user }}
+            - name: Printing App Name (Workflow level ENV)
+              run: echo ${{ env.APP_NAME }}
+            - name: Printing Job env (Job Level Environment)
+              run: echo $ENVIRONMENT
+            - name: Priting App Version (Step Level Environment)
+              env:
+                VERSION: V 5.0.1
+              run: echo "App version is $VERSION"
+            - name: Printing all envs of all levels
+              env:
+                Vers: v1
+              run: echo "Worlflow level ${{ env.APP_NAME }} , Job level $ENVIRONMENT , Step Level $Vers"
+
+            - name: Commit SHA and Actor
+              run: echo "Commit SHA ${{github.sha}}, Commit Actor ${{ github.actor }}"

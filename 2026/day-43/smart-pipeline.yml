@@ -1,0 +1,30 @@
+name: smart-pipeline
+
+on:
+    push:
+
+jobs:
+    lint-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Runs a linting job
+              run: echo "Running a linting job"
+    test-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Runs a testing job
+              run: echo "Running a testing job"
+    summary-job:
+        runs-on: ubuntu-latest
+        needs: [lint-job, test-job]
+        steps:
+            - name: Runs Summary
+              run: echo "Running Summary"
+            - name: Shows branch name
+              run: echo "${{ github.ref_name}}"
+            - name: show all events
+              run: echo '${{ toJson(github) }}'
+            - name: Shows commit message
+              run: echo "${{ github.event.head_commit.message }}"
+
+
