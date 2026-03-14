@@ -56,7 +56,7 @@
 
 - `after git push the firstly the ci/cd pipeline triggers in which first step is repository code checkout then is dockerhub login from there the next step is to build to dockerfile into image and push image to dockerhub after being pulled to dockerhub the image can be pulled locally or run or we can ssh to a ec2 instance and via docker compose we can run the image on a container`
 
-- Full Journey from git push to a Running Container
+**Full Journey from git push to a Running Container**
 
 - A developer pushes code to the repository using git push.
 
