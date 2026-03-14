@@ -1,0 +1,39 @@
+name: cache workflow
+
+on:
+    workflow_dispatch:
+
+jobs:
+    cache-storing:
+        runs-on: ubuntu-latest
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+
+            - name: node setup
+              uses: actions/setup-node@v6
+              with:
+                node-version: 24
+
+            - name: cache storing and finding
+              id: cache-store
+              uses: actions/cache@v4
+              with:
+                path: node-files/node_modules
+                key: ${{ runner.os }}-node-${{ hashFiles('node-files/package-lock.json') }}
+                restore-keys: |
+                     ${{ runner.os }}-node-
+            
+            - name: install dependencies
+              if: steps.cache-store.outputs.cache-hit != 'true'
+              run: cd node-files && npm install
+            
+            - name: run file
+              run: cd node-files && node index.js
+
+              
+
+
+              
+  
+
