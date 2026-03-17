@@ -75,7 +75,7 @@ Wait until the STATUS shows `Running`. Then explore:
 kubectl describe pod nginx-pod
 
 # Read the logs
-kubectl logs nginx-pod
+
 
 # Get a shell inside the container
 kubectl exec -it nginx-pod -- /bin/bash
@@ -125,7 +125,7 @@ You have been using the declarative approach (writing YAML, then `kubectl apply`
 
 ```bash
 # Create a pod without a YAML file
-kubectl run redis-pod --image=redis:latest
+ 
 
 # Check it
 kubectl get pods
