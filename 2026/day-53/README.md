@@ -30,8 +30,8 @@ A Service solves both problems. It provides:
 ```
 
 ---
-
-## Challenge Tasks
+ 
+## ChalleTasks
 
 ### Task 1: Deploy the Application
 First, create a Deployment that you will expose with Services. Create `app-deployment.yaml`:
@@ -74,7 +74,7 @@ Note the individual Pod IPs. These will change if pods restart — that is the p
 ### Task 2: ClusterIP Service (Internal Access)
 ClusterIP is the default Service type. It gives your Pods a stable internal IP that is only reachable from within the cluster.
 
-Create `clusterip-service.yaml`:
+Create `:
 
 ```yaml
 apiVersion: v1
