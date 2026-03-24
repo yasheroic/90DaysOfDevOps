@@ -1,0 +1,46 @@
+name: main-pipeline
+
+on:
+    workflow_dispatch:
+    # push:
+    #     branches:
+    #         - main
+
+jobs:
+    test:
+        uses: ./.github/workflows/reusable-build-test.yml
+        with:
+            node_version: 20
+            run_tests: true
+    
+    test-comment:
+        runs-on: ubuntu-latest
+        needs: test
+        steps:
+            - name: print Test result
+              run: echo "Tests- ${{ needs.test.outputs.test_result }}"
+            
+            - name: PR Summary
+              run: echo "PR Check passed for branch ${{ github.ref_name }} "
+
+
+    docker-push:
+        uses: ./.github/workflows/reusable-docker.yml
+        needs: test
+        with:
+            image_name: learnloop-ai
+            tag: ${{ github.sha }}
+        secrets: inherit
+
+    deploy:
+        runs-on: ubuntu-latest
+        needs:  docker-push
+        environment: production
+        
+        steps:
+            - name: print image URL
+              run: echo "Deploying image ${{ needs.docker-push-sha.outputs.image_url }} to Production" 
+    deploy-to-instance:
+        needs: [deploy]
+        uses: ./.github/workflows/deploy-ec2.yml
+        secrets: inherit

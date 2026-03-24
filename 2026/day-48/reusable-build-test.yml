@@ -1,0 +1,48 @@
+on:
+    workflow_call:
+        inputs:
+            node_version:
+                required: true
+                type: string
+            run_tests:
+                required: true
+                type: boolean
+                default: true
+        outputs:
+            test_result:
+                description: "Result of test execution"
+                value: ${{ jobs.build-test.outputs.test_result }}
+
+jobs:
+    build-test:
+        runs-on: ubuntu-latest
+        outputs:
+            test_result: ${{ steps.set-test-result.outputs.test_result }}
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+            
+            - name: node setup
+              uses: actions/setup-node@v4
+              with:
+                node-version: ${{inputs.node_version}}
+
+            - name: install dependencies
+              run: npm ci
+
+            - name: run Test if 'run_test' is set 'true'
+              id: test
+              if: ${{ inputs.run_tests}}
+              run: npm test
+              continue-on-error: true
+            
+            - name: set output of tests
+              id: set-test-result
+              run: |
+                if [ "${{ steps.test.outcome }}" == "success" ];then
+                    echo "test_result=passed" >> $GITHUB_OUTPUT
+                elif [ "${{ steps.test.outcome }}" == "skipped" ];then
+                    echo "test_result=passed" >> $GITHUB_OUTPUT
+                else
+                    echo "test_result=failed" >> $GITHUB_OUTPUT
+                fi

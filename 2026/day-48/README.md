@@ -57,7 +57,7 @@ Create `.github/workflows/reusable-docker.yml`:
 ---
 
 ### Task 4: PR Pipeline
-Create `.github/workflows/pr-pipeline.yml`:
+Create `.github/workflows`:
 1. Trigger: `pull_request` to `main` (types: `opened`, `synchronize`)
 2. Call the reusable build-test workflow:
    - Run tests: `true`
@@ -71,7 +71,7 @@ Create `.github/workflows/pr-pipeline.yml`:
 ---
 
 ### Task 5: Main Branch Pipeline
-Create `.github/workflows/main-pipeline.yml`:
+Create `.github/workflows/`:
 1. Trigger: `push` to `main`
 2. Job 1: Call the reusable build-test workflow
 3. Job 2 (depends on Job 1): Call the reusable Docker workflow
