@@ -160,3 +160,24 @@ jobs:
 **Verify:** Does the second job print the version from the reusable workflow? - YES ✅
 
 ---
+
+### Task 5: Create a Composite Action
+
+- ![alt text](image-2.png)
+
+**Verify:** Does your custom action run and print the greeting?- Yes ✅
+
+---
+
+### Task 6: Reusable Workflow vs Composite Action
+### Task 6: Reusable Workflow vs Composite Action
+Fill this in your notes:
+
+| | Reusable Workflow | Composite Action |
+|---|---|---|
+| Triggered by | `workflow_call` | `uses:` in a step |
+| Can contain jobs? | yes | no |
+| Can contain multiple steps? | yes(inside job) | yes |
+| Lives where? | .github/workflows/ | .github/actions/<action_name>/action.yml |
+| Can accept secrets directly? | Yes (secrets: block) | No (must pass via inputs) |
+| Best for | Reusing full pipelines (build, test, deploy) | Reusing repeated steps (setup, scripts, logging) |

@@ -1,0 +1,24 @@
+name: composite-workflow
+
+on:
+    workflow_dispatch:
+
+jobs:
+    composite-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: code checkout
+              uses: actions/checkout@v4
+            
+            - name: call composite workflow
+              id: greet
+              uses: ./.github/actions/setup-and-greet
+              with: 
+                name: yash
+                language: hi
+            
+            - name: prints if greet was run
+              run: |
+                echo "${{ steps.greet.outputs.greeted }}"
+
+    
