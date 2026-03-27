@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: cm-pod
+    labels:
+        app: my-cm
+
+spec:
+    containers:
+        - name: cm-container
+          image: busybox:latest
+          command: ["/bin/sh", "-c", "echo $APP_ENV && echo $APP_DEBUG && echo $APP_PORT"]
+          envFrom:
+          - configMapRef:
+                name: app-config

@@ -1,0 +1,26 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: cm2-pod
+
+spec:
+    containers:
+        - name: cm2-pod-container
+          image: busybox:latest
+          command: ["/bin/sh", "-c"]
+          args:
+              - while true; do
+                    cat /etc/config/message;
+                    echo "----";
+                    sleep 5;
+                done
+          volumeMounts:
+              - name: cm2-volume
+                mountPath: /etc/config
+          
+
+    volumes:
+        - name: cm2-volume
+          configMap: 
+              name: live-config
