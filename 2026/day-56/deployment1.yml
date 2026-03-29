@@ -1,0 +1,25 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+    name: my-deployment
+    labels:
+        app: my-dep
+
+spec:
+
+    replicas: 3
+    selector:
+        matchLabels:
+            app: my-dep
+    template:
+        metadata:
+            labels:
+                app: my-dep
+        spec:
+            containers:
+                - name: dep-container
+                  image: nginx:latest
+                  ports:
+                  - containerPort: 80
+

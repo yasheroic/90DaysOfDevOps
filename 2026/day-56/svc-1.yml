@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+    name: svc-1
+    labels:
+        app: state-pod
+
+spec:
+    selector:
+        app: state-pod
+    clusterIP: None
+    ports:
+        - port: 80
+          targetPort: 80
