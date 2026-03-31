@@ -1,0 +1,22 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: startup-probe-pod
+
+spec:
+    containers:
+        - name: startup-probe-pod-container
+          image: busybox:latest
+          command: ["/bin/sh", "-c"]
+          args:
+              - sleep 20 && touch /tmp/started && sleep 300
+          startupProbe:
+              exec:
+                  command: ["cat", "/tmp/started"]
+              periodSeconds: 5
+              failureThreshold: 12
+          livenessProbe:
+              exec:
+                  command: ["cat", "/tmp/started"]
+              periodSeconds: 5

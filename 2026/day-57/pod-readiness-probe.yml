@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: readiness-probe-pod
+    labels:
+        app: myapp
+spec:
+    containers:
+        - name: readiness-probe-pod-container
+          image: nginx:latest
+          ports:
+              - containerPort: 80
+          readinessProbe:
+              httpGet:
+                  path: /

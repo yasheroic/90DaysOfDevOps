@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: live-probe-pod
+
+spec:
+    containers:
+        - name: live-probe-pod-container
+          image: busybox:latest
+          command: ["/bin/sh", "-c"]
+          args:
+              - touch /tmp/healthy && sleep 30 && rm -rf /tmp/healthy
+          livenessProbe:
+              exec:  
+                  command: ["cat", "/tmp/healthy"]
+              periodSeconds: 5
+              failureThreshold: 3

@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: pending-pod
+
+spec:
+    containers:
+        - name: pending-pod-container
+          image: nginx:latest
+          resources:
+              requests:
+                  cpu: 100
+                  memory: 128Gi

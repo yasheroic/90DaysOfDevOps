@@ -55,7 +55,7 @@ A liveness probe detects stuck containers. If it fails, Kubernetes restarts the 
 
 1. Write a Pod manifest with a busybox container that creates `/tmp/healthy` on startup, then deletes it after 30 seconds
 2. Add a liveness probe using `exec` that runs `cat /tmp/healthy`, with `periodSeconds: 5` and `failureThreshold: 3`
-3. After the file is deleted, 3 consecutive failures trigger a restart. Watch with `kubectl get pod -w`
+3. After the file is deleted, 3 consecutive failures trigger a restart. Watch with `kubectl get pod -w`/
 
 **Verify:** How many times has the container restarted?
 

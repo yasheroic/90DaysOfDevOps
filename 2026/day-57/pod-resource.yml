@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: pod-resource
+
+spec:
+    containers:
+        - name: pod-resource-container
+          image: busybox:latest
+          ports:
+          - containerPort: 80
+          resources:
+              requests: 
+                  memory: 128Mi
+                  cpu: 100m
+              limits:
+                  memory: 256Mi
+                  cpu: 250m

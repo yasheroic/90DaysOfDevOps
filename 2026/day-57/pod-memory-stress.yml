@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+    name: memory-stress-pod
+
+spec:
+    containers:
+        - name: memeory-stress-pod-container
+          image: polinux/stress
+          command: ["stress"]
+          args: ["--vm", "1", "--vm-bytes", "150M", "--timeout", "60s"]
+          resources:
+              requests:
+                  memory: 50Mi
+              limits:
+                  memory: 100Mi
