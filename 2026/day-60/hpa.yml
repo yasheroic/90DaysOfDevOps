@@ -1,0 +1,40 @@
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v2
+
+metadata:
+    name: wordpress-hpa
+    namespace: capstone
+
+spec:
+    scaleTargetRef:
+        apiVersion: apps/v1
+        kind: Deployment
+        name: wordpress-deployment
+    minReplicas: 2
+    maxReplicas: 10
+    metrics:
+        - type: Resource
+          resource:
+              name: cpu
+              target:
+                  type: Utilization
+                  averageUtilization: 50
+    behavior:
+        scaleUp:
+            stabilizationWindowSeconds: 0  # No stabilization; scale up immediately
+            policies:
+                - type: Percent
+                  value: 100                   # Double capacity every 15 seconds if needed
+                  periodSeconds: 15
+                - type: Pods
+                  value: 4                     # Or add 4 pods every 15 seconds
+                  periodSeconds: 15
+            selectPolicy: Max
+
+        scaleDown:
+            stabilizationWindowSeconds: 300 # 300 second (5 min) window to prevent thrashing
+            policies:
+                - type: Percent
+                  value: 100                   # Allow full scale down if metrics stay low
+                  periodSeconds: 15
+            selectPolicy: Max

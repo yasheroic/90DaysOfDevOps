@@ -36,7 +36,7 @@ Ten days of Kubernetes — clusters, Pods, Deployments, Services, ConfigMaps, Se
 ---
 
 ### Task 3: Deploy WordPress (Days 52, 54, 57)
-1. Create a ConfigMap with `WORDPRESS_DB_HOST` set to `mysql-0.mysql.capstone.svc.cluster.local:3306` and `WORDPRESS_DB_NAME`
+1. Create a ConfigMap with `WORDPRESS_DB_HOST` set to `mysql-0.mysql.capstone.svc.cluster.local:3306` and `k`
 2. Create a Deployment with 2 replicas using `wordpress:latest` that:
    - Uses `envFrom` for the ConfigMap
    - Uses `secretKeyRef` for `WORDPRESS_DB_USER` and `WORDPRESS_DB_PASSWORD` from the MySQL Secret

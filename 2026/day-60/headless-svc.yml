@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+    name: headless-svc
+    labels:
+        app: my-app
+spec:
+    clusterIP: None
+    selector:
+        app: my-app
+    ports:
+        - port: 3306
+          targetPort: 3306
