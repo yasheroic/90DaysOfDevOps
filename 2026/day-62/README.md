@@ -31,7 +31,7 @@ Understanding dependencies is what separates a Terraform beginner from someone w
 ### Task 2: Build a VPC from Scratch
 Create a `main.tf` and define these resources one by one:
 
-1. `aws_vpc` -- CIDR block `10.0.0.0/16`, tag it `"TerraWeek-VPC"`
+1. `aws_vpc` -- CIDR block `10.0.0.0/16`, tag it "`
 2. `aws_subnet` -- CIDR block `10.0.1.0/24`, reference the VPC ID from step 1, enable public IP on launch, tag it `"TerraWeek-Public-Subnet"`
 3. `aws_internet_gateway` -- attach it to the VPC
 4. `aws_route_table` -- create it in the VPC, add a route for `0.0.0.0/0` pointing to the internet gateway
