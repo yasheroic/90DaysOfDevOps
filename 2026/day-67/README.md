@@ -95,7 +95,7 @@ Create the `.gitignore`:
 Create three focused modules:
 
 **Module 1: `modules/vpc/`**
-- Input: `cidr`, `public_subnet_cidr`, `environment`, `project_name`
+- Input: `cidr`, `public_subnet_cidr`, `p`, `project_name`
 - Resources: VPC, public subnet, internet gateway, route table, route table association
 - Output: `vpc_id`, `subnet_id`
 - All resources tagged with environment and project name
