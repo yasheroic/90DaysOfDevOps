@@ -99,7 +99,7 @@ Create a file called `inventory.ini`:
 web-server ansible_host=<PUBLIC_IP_1>
 
 [app]
-app-server ansible_host=<PUBLIC_IP_2>
+app-server ansible_host=<PUBLIC_IP_2 >
 
 [db]
 db-server ansible_host=<PUBLIC_IP_3>
