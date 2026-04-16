@@ -10,7 +10,7 @@ Today you write your first playbooks and learn the modules that you will use on 
 ## Expected Output
 - Multiple playbooks that install packages, manage services, and configure files
 - A clear understanding of plays, tasks, modules, and handlers
-- A markdown file: `day-69-playbooks.md`
+- A markdown file:`
 
 ---
 
@@ -82,7 +82,7 @@ Answer:
 ---
 
 ### Task 3: Learn the Essential Modules
-Practice each of these modules by writing a playbook called `essential-modules.yml` with multiple tasks:
+Practice each of these modules by writing a playbook called `--h` with multiple tasks:
 
 1. **`yum`/`apt`** -- Install and remove packages:
 ```yaml
@@ -98,7 +98,7 @@ Practice each of these modules by writing a playbook called `essential-modules.y
 
 2. **`service`** -- Manage services:
 ```yaml
-- name: Ensure Nginx is running
+- name: 
   service:
     name: nginx
     state: started
@@ -120,7 +120,7 @@ Practice each of these modules by writing a playbook called `essential-modules.y
 ```yaml
 - name: Create application directory
   file:
-    path: /opt/myapp
+    path: '/opt/myapp'
     state: directory
     owner: ec2-user
     mode: '0755'
