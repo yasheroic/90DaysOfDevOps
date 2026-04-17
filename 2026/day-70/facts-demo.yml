@@ -1,0 +1,17 @@
+---
+
+- name: Facts Demo
+  hosts: all
+  tasks:
+
+    - name: Show OS Info
+      debug:
+        msg: >
+          Hostname: {{ ansible_hostname  }},
+          OS: {{ ansible_distribution  }} {{ ansible_distribution_version  }},
+          RAM: {{ ansible_memtotal_mb }}MB,
+          IP: {{ ansible_default_ipv4.address }}
+
+    - name: show all network interface
+      debug:
+        var: ansible_interfaces
