@@ -43,7 +43,7 @@ mysql:
   enabled: true
   resources:
     requests:
-      memory: "128Mi"
+      memory: "512Mi"
       cpu: "100m"
     limits:
       memory: "256Mi"
@@ -95,7 +95,7 @@ mysql:
   enabled: true
   resources:
     requests:
-      memory: "256Mi"
+      memory: "512Mi"
       cpu: "250m"
     limits:
       memory: "512Mi"
@@ -130,7 +130,7 @@ bankapp:
     pullPolicy: IfNotPresent
   resources:
     requests:
-      memory: "256Mi"
+      memory: "512Mi"
       cpu: "250m"
     limits:
       memory: "512Mi"
